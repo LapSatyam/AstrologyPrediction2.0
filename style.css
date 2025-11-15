@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: black;
+    height: 115vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 300;
+    /* font-size: 1.2rem; */
+    position: relative;
+}
+
+input {
+    background: #1a1a1a;
+    /* width: 40px;
+    height: 20px; */
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    padding: 8px 12px;
+    border: none;
+    animation: glow3 2s infinite;
+}
+@keyframes glow3 {
+    0% {
+        box-shadow: 0 0 5px #00ffff;
+    }
+    50% {
+        box-shadow: 0 0 20px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 5px #00ffff;
+    }
+}
+form {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    position: sticky;
+    top: 25px;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+    }
+
+    to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff;
+    }
+}
+
+.button {
+    width: 9rem;
+    height: 3rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    background-color: #00c006;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    animation: glow2 2s infinite;
+}
+@keyframes glow2 {
+    0% {
+        box-shadow: 0 0 5px #4CAF50;
+    }
+    50% {
+        box-shadow: 0 0 20px #4CAF50;
+    }
+    100% {
+        box-shadow: 0 0 5px #4CAF50;
+    }
+    
+}
+.button:hover {
+    background-color: #35ff3f;
+    /* color: black; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    margin: 35px;
+    font-size: 1.6rem;
+    text-align: center;
+    color: #00ffff;
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 1.09;
+    animation: glow4 2s infinite alternate;
+    
+} 
+@keyframes glow4 {
+    from {
+        text-shadow: 0 0 5px #00ffff;
+    }
+
+    to {
+        text-shadow: 0 0 15px #00ffff;
+    }
+}
