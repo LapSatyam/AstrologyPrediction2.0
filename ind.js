@@ -107,16 +107,53 @@ const recommendations = [
     "Be proud of surviving days you thought you wouldn’t."
 ];
 
+function getIndex(value, max) {
+    return Math.abs(value % max);  // always returns a valid index: 0 to max-1
+}
+
+function isValidDate(day, month, year) {
+    if (year.toString().length !== 4) return false;
+    if (month < 1 || month > 12) return false;
+    if (day < 1 || day > 31) return false;
+    return true;
+}
+
+
+// ====== Main Logic ======
+
 const form = document.querySelector('form');
+const output = document.querySelector('h2');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const surname = document.getElementById('surname').value;
+
+    const name = document.getElementById('name').value.trim();
+    const surname = document.getElementById('surname').value.trim();
     const day = parseInt(document.getElementById('day').value);
     const month = parseInt(document.getElementById('month').value);
     const year = parseInt(document.getElementById('year').value);
 
-     document.querySelector('h2').textContent = `Hey ${name} ${surname}, Your Rashi(Zodiac Sign) is ${rashi[month - 1]} ${compliments[(day * name.length) % 31]} ${victimCompliments[(name.length * month) % 21]} ${recommendations[((year * surname.length + name.length) - day) % 31]}`;
-     form.reset();
-})
+    if (!isValidDate(day, month, year)) {
+        output.textContent = "Please enter a valid date of birth.";
+        return;
+    }
+
+    // ====== Index generation ======
+    const complimentIndex = getIndex(day * name.length, 31);
+    const victimIndex = getIndex((name.length + surname.length / 2) * month, 20);
+    const recIndex = getIndex((year * surname.length + (name.length / 2)) - day, 30);
+
+    // ====== Final Output ======
+    output.textContent =
+        `Hey ${name},
+
+Your Rashi (Zodiac Sign) is: ${rashi[month - 1]},
+
+${compliments[complimentIndex]}
+
+${victimCompliments[victimIndex]}
+
+${recommendations[recIndex]}`;
+
+    form.reset();
+});
